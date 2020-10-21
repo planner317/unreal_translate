@@ -1,1 +1,142 @@
-1212
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>перевод строк с заменой</title>
+</head>
+
+<body>
+    <div class="base">
+        <div class="text">
+
+            <div class="title">оригинальный текст<br>
+                <textarea id="originalText">Cannot attach actor to self.
+Cannot attach actors without root components.
+sup
+Cannot attach static actor {StaticActor} to dynamic actor {DynamicActor}.
+Parent cannot become the child of their descendant
+{0} cannot be attached to {2}
+Change {0}|plural(one=Entity, other=Entities) category</textarea>
+            </div>
+            <div class="title">перевод<br>
+                <textarea id="modifyText">>Cannot attach actor to self.
+Cannot attach actors without root components.
+sup
+Cannot attach UI actor {StaticActor} to dynamic actor {DynamicActor}.
+LOCa cannot aCVew the LOD, of .LOD. their descendant aUI
+{0} cannot be attached to {2}
+Change {0}|plural(one=Entity, other=Entities) category</textarea>
+            </div>
+        </div>
+        <div id="option">
+            <div class="block">
+                <div class="opt">
+                    <input type="checkbox" checked id="delString">затереть строку если букв в оригинале меньше(только лат. буквы без команд в {}...)
+                    <input type="number" value="25" id="numStrOriginal">
+                </div>
+                <div class="opt">
+                    <input type="checkbox" id="delEmpty">убрать пустые строки из окна перевода
+                </div>
+                <div class="opt">
+                    <input type="checkbox" checked id="plural">plural удалить оставить только one
+                </div>
+                <div class="opt">
+                    <input type="checkbox" checked id="brackets_figur">заскобить слова в {}
+                </div>
+                <div class="opt">
+                    <input type="checkbox" checked id="bracketsUp">заскобить слова в ВЕРХНЕМ регистре
+                </div>
+                <div class="opt">
+                    <input type="checkbox" id="delSpaceBrackets">удалить образовавшийся пробел между словом и спецскобками [_ _]
+                </div>
+                <div class="opt">
+                    <input type="checkbox" id="delBrackets">удалить спецскобки [_ _]
+                </div>
+                <div class="opt">
+                    <input type="checkbox" id="dropEmpty">заменить затертые строки на оригинал
+                </div>
+                <div class="opt">
+                    <input type="checkbox" id="addOrig">сначало оригинал +<input type="text" id="textBeforeModify" если перевод это --- то только оригинал
+                        value="<lf>♦"> + перевод (если в строке @param то только перевод)
+                </div>
+                <br>
+                <button id="button">применить модификацию</button> <strong id="status">применить</strong>
+            </div>
+            <div class="block">
+                    <input type="checkbox" checked id="exclusionChesk">заскобить все слова(записывать через пробел любой регистр, так же поиск будет и с S в конце)
+                <textarea
+                    id="exclusion">actor character lightmap tile timeline screenshot pawn blueprint build scale player volume cinematic Spotlight vertex brush bone viewport Emitter asset mesh meshe collision node debug none null boolean integer float false true</textarea>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .base,
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            color: white;
+            background: #050505;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text {
+            display: flex;
+            height: 60%;
+        }
+
+        .title {
+            text-align: center;
+            color: yellow;
+            flex: 1;
+        }
+
+        #originalText,
+        #modifyText {
+            background: #111;
+            color: white;
+            height: 95%;
+            width: -webkit-fill-available;
+            white-space: nowrap;
+        }
+
+        #exclusion {
+            background: #111;
+            color: greenyellow;
+            font-size: large;
+            height: 85%;
+            width: -webkit-fill-available;
+        }
+
+        #option {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #222;
+            height: 35%;
+            display: flex;
+        }
+
+        #numStrOriginal {
+            width: 50px;
+        }
+
+        .block {
+            flex: 1;
+        }
+        #button{
+            background: #0f8;
+    font-size: medium;
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
